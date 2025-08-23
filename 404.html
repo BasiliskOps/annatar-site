@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#000000" />
+  <title>404 — Annatar</title>
+  <style>
+    :root{
+      --bg: #000000;
+      --panel: #121214;
+      --text: #e5e7eb;
+      --muted: #a1a1aa;
+      --radius: 20px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:var(--bg); color:var(--text); font:16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Noto Sans, Arial}
+    main{min-height:100%; display:grid; place-items:center; padding:2rem}
+    .card{max-width: 44rem; width:100%; background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.16); border-radius:var(--radius); padding:2rem; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: inset 0 1px 0 rgba(255,255,255,.10), 0 10px 28px rgba(0,0,0,.45)}
+    h1{margin:0 0 .25rem; font-size:1.75rem; letter-spacing:-.01em}
+    p{margin:.4rem 0}
+    .muted{color:var(--muted)}
+    .row{display:flex; align-items:center; gap:1rem}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.8rem 1rem; border-radius:999px; border:1px solid rgba(255,255,255,.16); background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.04)); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 10px 28px rgba(0,0,0,.45); text-decoration:none; color:var(--text)}
+    .btn:hover{transform:translateY(-1px); border-color:rgba(255,255,255,.24)}
+    .stack{display:grid; gap:1rem}
+    .ring{width:64px; height:64px; flex:none; opacity:.8}
+    .hint{font-size:.95rem}
+    .code{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size:.95rem}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="card">
+      <div class="row">
+        <svg class="ring" viewBox="0 0 100 100" aria-hidden="true">
+          <defs>
+            <radialGradient id="g" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity=".9"/>
+              <stop offset="70%" stop-color="#ffffff" stop-opacity=".15"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="50" cy="50" r="28" fill="none" stroke="url(#g)" stroke-width="2"/>
+          <circle cx="50" cy="50" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1" stroke-dasharray="4 6"/>
+          <circle cx="50" cy="50" r="20" fill="rgba(255,255,255,.04)" />
+        </svg>
+        <div class="stack">
+          <h1>404 — The path is warded</h1>
+          <p class="muted">This route isn’t open. In fair guise some called him <em>Annatar</em>, but the name that lingered in shadow belonged elsewhere.</p>
+          <p class="hint">Return to the gate and try another path.</p>
+          <div>
+            <a class="btn" href="/">Back to Annatar</a>
+          </div>
+          <p class="muted code">Error: <span>ENOENT</span> • Request ID: <script>document.write((Math.random().toString(16).slice(2,10)).toUpperCase())</script></p>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

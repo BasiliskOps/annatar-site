@@ -1,0 +1,7 @@
+# robots.txt for Annatar
+# Allow everything and advertise the sitemap. Update the URL if you switch to a custom domain.
+User-agent: *
+Allow: /
+
+# Default to GitHub Pages URL; change to https://annatar.ai/sitemap.xml when you go custom.
+Sitemap: https://<your-username>.github.io/annatar-site/sitemap.xml
