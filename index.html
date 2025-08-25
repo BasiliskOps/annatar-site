@@ -133,22 +133,14 @@
     @media(max-width:860px){
       .menu-btn{display:inline-flex; align-items:center; gap:.4rem; border:1px solid rgba(148,163,184,.2); background:transparent; color:var(--text); padding:.5rem .7rem; border-radius:.6rem}
       nav ul{display:none}
-      nav.open ul{display:flex; position:absolute; top:64px; right:1rem; flex-direction:column; border:1px solid var(--glass-border); border-radius:.75rem; padding:.5rem; width:min(260px, 90vw); background:linear-gradient(180deg, var(--glass-fill-1), var(--glass-fill-2)); backdrop-filter: blur(12px) saturate(120%); -webkit-backdrop-filter: blur(12px) saturate(120%); box-shadow: 0 12px 24px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.08); z-index:60;}
-      nav.open ul a{padding:.6rem .5rem; border-radius:.5rem; display:block}
+      nav.open ul{display:flex; position:absolute; top:64px; right:1rem; flex-direction:column; border:1px solid var(--glass-border); border-radius:.75rem; padding:.5rem; width:min(240px, 90vw)}
+      nav.open ul a{padding:.6rem .5rem; border-radius:.5rem}
       nav.open ul a:hover{background:#0f1319}
-      nav.open ul .navpill{border-color:transparent; background:transparent; box-shadow:none}
-      nav.open ul .navpill:hover{background:rgba(255,255,255,.06)}
-      /* Ensure explicit show/hide targeting the #menu for reliability */
-      #menu{display:none}
-      nav.open #menu{display:flex}
-    }
-      nav.open ul .navpill:hover{background:rgba(255,255,255,.06)}
     }
 
     /* Background equations canvas (unchanged area uses #bg-matrix) */
     #bg-matrix{position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:0}
     header, main, footer{position:relative; z-index:1}
-    header.glass{overflow:visible}
 
     /* Nav pills (individual glass buttons) */
     .navpill{position:relative; display:inline-flex; align-items:center; gap:.35rem; padding:.55rem .9rem; border-radius:999px; border:1px solid var(--glass-border); background:linear-gradient(180deg, var(--glass-fill-1), var(--glass-fill-2)); backdrop-filter: blur(10px) saturate(120%); -webkit-backdrop-filter: blur(10px) saturate(120%); box-shadow: inset 0 1px 0 rgba(255,255,255,.10), 0 6px 18px rgba(0,0,0,.35);}
@@ -214,7 +206,7 @@
         <span>Annatar</span>
       </a>
       <nav id="site-nav">
-        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+        <button class="menu-btn" aria-expanded="false" aria-controls="menu" onclick="toggleMenu(this)">Menu</button>
         <ul id="menu" role="menu">
           <li><a class="link navpill" href="#services">Services</a></li>
           <li><a class="link navpill" href="#about">About</a></li>
@@ -325,26 +317,10 @@
   <script>
     function toggleMenu(btn){
       const nav = document.getElementById('site-nav');
-      if(!nav || !btn) return;
       const open = nav.classList.toggle('open');
       btn.setAttribute('aria-expanded', String(open));
     }
     document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Robust Menu binding (mobile + desktop, click/touch/pointer)
-    (function(){
-      const btn = document.querySelector('.menu-btn');
-      const nav = document.getElementById('site-nav');
-      if(!btn || !nav) return;
-      const openMenu = ()=>{ nav.classList.add('open'); btn.setAttribute('aria-expanded','true'); };
-      const closeMenu = ()=>{ nav.classList.remove('open'); btn.setAttribute('aria-expanded','false'); };
-      const toggleMenuFn = ()=>{ nav.classList.contains('open') ? closeMenu() : openMenu(); };
-      const handler = (e)=>{ if(e){ e.preventDefault(); e.stopPropagation(); } toggleMenuFn(); };
-      ['click','pointerup','touchend'].forEach(evt=> btn.addEventListener(evt, handler, { passive:false }));
-      // Close on outside click / Escape
-      document.addEventListener('click', (e)=>{ if(!nav.contains(e.target) && e.target!==btn){ closeMenu(); } });
-      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeMenu(); } });
-    })();
 
     // Reveal on scroll
     const els = document.querySelectorAll('[data-animate]');
